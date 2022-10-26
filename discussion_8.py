@@ -12,8 +12,7 @@ def getLink(soup):
     for line in alist:
         if "Olympic" in line.text:
             b = line.get("href")
-            link = "https//en.wikipedia.org" + b
-            print(link)
+            link = "https://en.wikipedia.org" + b
             return link
     
 
@@ -21,8 +20,25 @@ def getLink(soup):
 # Task 3: Get the details from the box titled "College/school founding". Get all the college/school names and the year they were
 # founded and organize the same into key-value pairs.
 def getAdmissionsInfo2019(soup):
+    dict = {}
+    a = soup.find_all("tbody")
+    for item in a:
+        if "College/school" in item.text:
+            b = item.find_all("tr")
+            break
+    print(len(b))
+    for item in b:
+        school = item.text[:-4]
+        date = item.text[-4:]
+        print(school, date)
+    return dict
 
-    pass
+
+            
+
+
+
+    
 
 
 
