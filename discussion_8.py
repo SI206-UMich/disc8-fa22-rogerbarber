@@ -28,9 +28,11 @@ def getAdmissionsInfo2019(soup):
             break
     print(len(b))
     for item in b:
-        school = item.text[:-4]
-        date = item.text[-4:]
+        school = item.text[:-4].strip()
+        date = item.text[-4:].replace(" ", "")
+        dict[school] = date
         print(school, date)
+    print(dict)
     return dict
 
 
